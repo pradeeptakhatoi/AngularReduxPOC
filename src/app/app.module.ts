@@ -17,6 +17,7 @@ import { ProjectListComponent } from './project/project-list/project-list.compon
 import { AddProjectComponent } from './project/add-project/add-project.component';
 
 import * as fromApp from './store/app.reducer';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -24,7 +25,8 @@ const routes = [
   { path: 'edit-todo/:id', component: EditTodoComponent },
   { path: 'todo-list', component: TodoListComponent },
   { path: 'add-project', component: AddProjectComponent },
-  { path: 'project-list', component: ProjectListComponent }
+  { path: 'project-list', component: ProjectListComponent },
+  { path: 'aboutus', component: AboutusComponent }
 ];
 
 @NgModule({
@@ -36,7 +38,8 @@ const routes = [
     AddTodoComponent,
     EditTodoComponent,
     ProjectListComponent,
-    AddProjectComponent
+    AddProjectComponent,
+    AboutusComponent
   ],
   imports: [
     BrowserModule,
