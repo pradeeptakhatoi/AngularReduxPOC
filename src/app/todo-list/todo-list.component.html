@@ -1,0 +1,29 @@
+<h1 class="h1 text-center">Todo List</h1>
+<a [routerLink]="['/add-todo']" routerLinkActive="active" >Add New Todo</a>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Desc</th>
+      <th scope="col" style="text-align: center;">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>-</td>
+    </tr>   -->
+    <tr *ngFor="let todo of todos; let i = index;">
+      <td scope="row">{{ i + 1}}</td>
+      <td>{{todo.title}}</td>
+      <td>{{todo.desc}}</td>
+      <td style="text-align: center;">
+        <a [routerLink]="['/edit-todo', todo.id]" routerLinkActive="router-link-active" >Edit</a> |
+        <a (click)='removeTodo(todo);' href="javascript:;">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
