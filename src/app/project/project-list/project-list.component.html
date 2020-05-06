@@ -1,0 +1,25 @@
+<h1 class="h1 text-center">Project List</h1>
+<a [routerLink]="['/add-project']" routerLinkActive="active" >Add New project</a>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Desc</th>
+      <th scope="col">Price</th>
+      <th scope="col" style="text-align: center;">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let project of (projects |async).projects; let i = index;">
+      <td scope="row">{{ i + 1}}</td>
+      <td>{{project.title}}</td>
+      <td>{{project.desc}}</td>
+      <td>{{project.price}}</td>
+      <td style="text-align: center;">
+        <a (click)='removeProject(project);' href="javascript:;">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

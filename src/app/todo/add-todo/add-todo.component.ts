@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import * as TodoActions from '../store/toto-list.action';
+import * as fromApp from '../../store/app.reducer';
 
 @Component({
   selector: 'app-add-todo',
@@ -18,7 +19,7 @@ export class AddTodoComponent implements OnInit {
     desc: ['', [Validators.required]],
   });
 
-  constructor(private store: Store<{todoList: {todos: any[]}}>, private fb: FormBuilder, private router: Router) {}
+  constructor(private store: Store<fromApp.AppState>, private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     // Initialization Code

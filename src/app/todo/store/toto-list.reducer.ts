@@ -15,6 +15,11 @@ const initialState = {
   ],
 };
 
+
+export interface State {
+  todos: any;
+}
+
 export function todoListReducer(state = initialState, action: TodoActions.TodoActions) {
   switch (action.type) {
     case TodoActions.ADD_TODO:

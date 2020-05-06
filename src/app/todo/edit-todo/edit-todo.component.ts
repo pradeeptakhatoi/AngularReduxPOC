@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import * as TodoActions from '../store/toto-list.action';
+import * as fromApp from '../../store/app.reducer';
 
 @Component({
   selector: 'app-edit-todo',
@@ -21,7 +22,7 @@ export class EditTodoComponent implements OnInit {
   });
 
   constructor(
-    private store: Store<{todoList: {todos: any[]}}>,
+    private store: Store<fromApp.AppState>,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute) {
