@@ -25,6 +25,17 @@
         <a [routerLink]="['/aboutus']" routerLinkActive="active" class="nav-link">About Us</a>
       </li>
     </ul>
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li *ngIf="user?.id" class="nav-item">
+        <a class="nav-link">Welcome {{user.name}}</a>
+      </li>
+      <li *ngIf="!user?.id" class="nav-item">
+        <a [routerLink]="['/login']" routerLinkActive="active" class="nav-link">Login</a>
+      </li>
+      <li *ngIf="user?.id" class="nav-item" style="cursor: pointer;">
+        <a (click)='logout();' class="nav-link">Logout</a>
+      </li>
+    </ul>
   </div>
 </nav>
 <div class="wrapper">

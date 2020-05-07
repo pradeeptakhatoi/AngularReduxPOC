@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 
@@ -18,6 +18,9 @@ import { AddProjectComponent } from './project/add-project/add-project.component
 
 import * as fromApp from './store/app.reducer';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { FakeBackendInterceptor } from './services/fakebackend.interceptor';
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +29,8 @@ const routes = [
   { path: 'todo-list', component: TodoListComponent },
   { path: 'add-project', component: AddProjectComponent },
   { path: 'project-list', component: ProjectListComponent },
-  { path: 'aboutus', component: AboutusComponent }
+  { path: 'aboutus', component: AboutusComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
@@ -39,7 +43,8 @@ const routes = [
     EditTodoComponent,
     ProjectListComponent,
     AddProjectComponent,
-    AboutusComponent
+    AboutusComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,10 @@ const routes = [
     StoreModule.forRoot(fromApp.appReducer),
     RouterModule.forRoot(routes),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
